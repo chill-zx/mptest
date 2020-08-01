@@ -45,9 +45,10 @@ public class User  {
     private String email;
 
     /**
-     * 逻辑删除
+     * 逻辑删除0默认存在，1默认删除
      */
     @TableLogic
+    @TableField(fill = FieldFill.INSERT)
     private Integer deleted;
     /**
      * 创建时间
