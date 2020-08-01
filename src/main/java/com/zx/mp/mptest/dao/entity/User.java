@@ -1,12 +1,13 @@
 package com.zx.mp.mptest.dao.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -26,8 +27,8 @@ public class User  {
     /**
      * id
      */
-    @TableId(value = "id",type= IdType.AUTO)
-    private Integer id;
+    //@TableId(value = "id",type= IdType.AUTO)
+    private Long id;
     /**
      * 姓名
      */
@@ -48,4 +49,22 @@ public class User  {
      */
     @TableLogic
     private Integer deleted;
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
+
+    /**
+     * 版本号
+     */
+    @Version
+    @TableField(fill = FieldFill.INSERT)
+    private Integer version;
 }
